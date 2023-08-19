@@ -17,7 +17,7 @@ describe('Test jwtPayload function', () => {
     },
   };
 
-  it('return payload from valid jwt Bearer token', () => {
+  it('return payload from valid jwt', () => {
     expect(jwtPayload(authorized)).toBeTruthy();
   });
 
