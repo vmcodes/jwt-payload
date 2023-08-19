@@ -1,7 +1,7 @@
-# jwt-payload
+# jwt-payloader
 
 A simple tool to extract a payload from a jwt.
 
 ```bash
-npm i jwt-payload
+npm i jwt-payloader
 ```
