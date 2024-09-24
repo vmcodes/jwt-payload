@@ -1,6 +1,6 @@
-# jwt-payloader
+# JWT-Payloader
 
-A simple tool to decode and extract a payload from a jwt.
+A simple tool to decode and extract payload values from a JSON Web Token.
 
 ```bash
 npm i jwt-payloader
@@ -10,11 +10,11 @@ npm i jwt-payloader
 
 ```javascript
 import { jwtPayload } from 'jwt-payloader';
-// jwt token
-const token =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
 
-// sample request headers
+// JSON Web Token
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
+
+// example request headers using a JWT
 const request = {
   headers: {
     'content-Type': 'application/json',
@@ -22,10 +22,16 @@ const request = {
   },
 };
 
-// decode authorization headers and return jwt payload
+// decode authorization header and return JWT payload
 const decoded = jwtPayload(request);
 
-// example object returned
+// decoded token values
 console.log(decoded);
-`{ sub: '1234567890', name: 'John Doe', iat: 1516239022 }`;
+{ sub: '1234567890', name: 'John Doe', iat: 1516239022 };
+
+
+// you can also destructure an expected object value
+const { sub } = jwtPayload(request);
+
+console.log('1234567890');
 ```

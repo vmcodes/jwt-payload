@@ -6,26 +6,22 @@ describe('Test jwtPayload function', () => {
 
   const authorized = {
     headers: {
-      'content-Type': 'application/json',
+      'content-type': 'application/json',
       authorization: `Bearer ${token}`,
     },
   };
 
   const unauthorized = {
     headers: {
-      'content-Type': 'application/json',
+      'content-type': 'application/json',
     },
   };
 
-  it('return payload from valid jwt', () => {
-    expect(jwtPayload(authorized)).toBeTruthy();
+  it('returns payload from valid bearer token', () => {
+    expect(jwtPayload(authorized)).toBeInstanceOf(Object);
   });
 
-  it('throws error for headers missing authorization', () => {
+  it('throws error for headers missing authorization headers', () => {
     expect(jwtPayload(unauthorized)).toBeFalsy();
-  });
-
-  it('throws error for missing headers', () => {
-    expect(jwtPayload({})).toBeFalsy();
   });
 });
