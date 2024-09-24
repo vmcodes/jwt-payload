@@ -33,5 +33,6 @@ console.log(decoded);
 // you can also destructure an expected object value
 const { sub } = jwtPayload(request);
 
-console.log('1234567890');
+console.log(sub);
+'1234567890'
 ```
